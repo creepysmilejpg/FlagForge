@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>{{ challenge.title }}</h2>
+
+<p>{{ challenge.description }}</p>
+
+<p>Category: {{ challenge.category }}</p>
+<p>Points: {{ challenge.points }}</p>
+
+<hr>
+
+{% if already_solved %}
+
+    <p>You have already solved this challenge!</p>
+
+{% else %}
+
+    <h3>Submit Flag</h3>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">Submit</button>
+    </form>
+
+{% endif %}
+
+{% endblock %}

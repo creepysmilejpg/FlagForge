@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Available Challenges</h2>
+
+{% for challenge in challenges %}
+
+    <h3>
+        <a href="{% url 'challenge_detail' challenge.id %}">
+            {{ challenge.title }}
+        </a>
+    </h3>
+
+    <p>Category: {{ challenge.category }}</p>
+    <p>Points: {{ challenge.points }}</p>
+
+    <hr>
+
+{% empty %}
+
+    <p>No challenges are currently available.</p>
+
+{% endfor %}
+
+{% endblock %}

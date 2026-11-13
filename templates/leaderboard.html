@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Leaderboard</h2>
+
+<table border="1" cellpadding="5">
+
+    <tr>
+        <th>Player</th>
+        <th>Score</th>
+        <th>Challenges Solved</th>
+    </tr>
+
+    {% for player in players %}
+
+    <tr>
+        <td>{{ player.player__username }}</td>
+        <td>{{ player.score|default:0 }}</td>
+        <td>{{ player.solved }}</td>
+    </tr>
+
+    {% empty %}
+
+    <tr>
+        <td colspan="3">No submissions yet.</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock %}
